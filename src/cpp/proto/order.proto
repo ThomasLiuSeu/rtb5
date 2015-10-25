@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+import "click.proto";
+
+package RTB5;
+
+service OrderService {
+  rpc Process (OrderRequest) returns (OrderResponse) {}
+}
+
+message OrderRequest {
+  //
+  uint64 user_id = 1;
+  //
+  string tags = 2;
+  //
+  uint64 begin_time = 3;
+  //
+  uint64 end_time = 4;
+}
+
+message OrderResponse {
+  //
+  repeated Order orders = 1;
+}
+
+message Order {
+  //
+  uint64 order_id = 1;
+  //
+  uint64 status = 2;
+  //
+  uint64 trading_volume = 3;
+  //
+  uint64 commission = 4;
+  // 
+  uint64 order_time = 5;
+  //
+  uint64 valid_time = 6;
+  //
+  string currency_type = 7;
+  //
+  uint64 click_id = 8;
+  //
+  Click click = 9;
+}

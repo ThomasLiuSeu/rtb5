@@ -1,11 +1,19 @@
 #!/bin/sh
-projdir=/var/www/html
-cp ../*.html $projdir
-cp ../*.jsp $projdir
-cp -r ../webroot $projdir
-cp ../src/php/*.php $projdir
-cp -r ../document $projdir
+
 cd ..
-proj=`pwd`
-job="cd $proj/api/python/cases/55haitao && python fiftyfive_order.py"
-echo $job 
+proj_dir=`pwd`
+deploy_dir=/var/www/$1
+cgi_dir=$deploy_dir/cgi-bin/
+
+rm -r $deploy_dir/*
+mkdir -p $deploy_dir
+mkdir -p $cgi_dir
+cp $proj_dir/html/*.html $deploy_dir
+cp $proj_dir/html/*.jsp $deploy_dir
+cp -r $proj_dir/webroot $deploy_dir
+cp $proj_dir/src/php/*.php $deploy_dir
+cp -r $proj_dir/document $deploy_dir
+cp $proj_dir/src/cpp/bin/* $cgi_dir
+
+cd $cgi_dir
+nohup ./click_server &>../click_sever.log &

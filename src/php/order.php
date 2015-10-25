@@ -2,7 +2,7 @@
     $mysql_server_name="localhost"; //数据库服务器名称
     $mysql_username="root"; // 连接数据库用户名
     $mysql_password="abcdefg2008"; // 连接数据库密码
-    $mysql_database="CPSUnion"; // 数据库的名字
+    $mysql_database="rtb5"; // 数据库的名字
     $ret=array();
     $ret_status=array();
     $token= $_GET["token"] ;
