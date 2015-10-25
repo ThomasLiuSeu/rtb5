@@ -17,3 +17,4 @@ cp $proj_dir/src/cpp/bin/* $cgi_dir
 
 cd $cgi_dir
 nohup ./click_server &>../click_sever.log &
+nohup ./order_server &>../order_server.log &

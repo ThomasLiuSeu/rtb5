@@ -17,7 +17,6 @@ bool ViglinkOrderUpdateFunctor::Init() {
 }
 
 bool ViglinkOrderUpdateFunctor::JsonToProto(const std::string& tags, const std::string& cashback, Order* order) {
-  LOG(ERROR) << tags <<  "   " << cashback;
   try {
     time_t now;
     time(&now);
@@ -47,7 +46,6 @@ bool ViglinkOrderUpdateFunctor::Process(std::vector<Order>* orders) {
   std::stringstream ss;
   ss << ifs.rdbuf() ;
   response = ss.str();
-  response = "{\"2012/01/01\": [{\"XYZ\":4.05,\"ABC\":2.20},{}], \"2012/01/02\": [{\"ABC\":13.02},{\"amazon.com\":3}]}";
   LOG(ERROR) << "Response:" << response;
   Json::Reader reader;
   Json::Value value;

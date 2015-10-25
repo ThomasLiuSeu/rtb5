@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+import "user.proto";
+
+package RTB5;
+
+message DeleteUserRequest {
+  //
+  uint64 user_id = 1;
+}
+
+message DeleteUserResponse {
+  //
+  enum OperateStatus {
+    //
+    SUCCESS = 1;
+    //
+    USER_ID_NOT_EXIST = 2;
+  }
+}
+
+message AddUserRequest {
+  //
+  User user;
+}
+
+message AddUserResponse {
+  //
+  enum OperateStatus {
+    //
+    SUCCESS = 1;
+    //
+    USER_ID_ALREADY_EXIST = 2;
+  }
+  //
+  string token;
+}
+
+message UpdateUserRequest {
+  //
+  User user;
+}
+
+message UpdateUserResponse {
+  //
+  enum OperateStatus {
+    //
+    SUCCESS = 1;
+    //
+    USER_ID_NOT_EXIST = 2;
+  }
+}

@@ -50,7 +50,7 @@ bool Haitao55OrderUpdateFunctor::Process(std::vector<Order>* orders) {
       if (JsonToProto(order_json, &order)) {
         orders->push_back(order);
       } else {
-        LOG(ERROR) << "Failed to read " << order_json.asString();
+        LOG(ERROR) << "Failed to read " << order_json.toStyledString();
       }
     }
   } else {

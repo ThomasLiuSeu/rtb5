@@ -55,6 +55,7 @@ class Database {
     std::string sql = GenerateSelectSql<Order>();
     std::vector<std::map<std::string, std::string> > results;
     sql += GenerateConditionSql(order_request);
+    LOG(ERROR) << sql;
     if (!Exec(sql, &results)) {
       return false;
     }
@@ -117,16 +118,16 @@ class Database {
   std::string GenerateSelectSql() {
     std::string table = "";
     if (std::is_same<Record, Union>::value) {
-      table = "union";
+      table = "`union`";
     } else if (std::is_same<Record, Campaign>::value){
-      table = "campaign";     
+      table = "`campaign`";     
     } else if (std::is_same<Record, Click>::value){
-      table = "click";
+      table = "`click`";
     } else if (std::is_same<Record, Order>::value){
-      table = " `clicks` INNER JOIN `orders` ON clicks.click_id = orders.click_id ";
+      table = " `click` INNER JOIN `order` ON click.click_id = order.click_id ";
     }
     std::string sql;
-    sql += "SELECT * FROM `" + table + "`";
+    sql += "SELECT * FROM " + table;
     return sql;
   }
   //

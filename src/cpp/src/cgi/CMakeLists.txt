@@ -6,4 +6,4 @@ TARGET_LINK_LIBRARIES(click_cgi click_pb -lcgicc)
 
 ADD_EXECUTABLE(order_cgi  order_cgi.cc)
  
-TARGET_LINK_LIBRARIES(order_cgi order_pb -lcgicc -lgpr -lprotobuf)
+TARGET_LINK_LIBRARIES(order_cgi order_pb encoding -lcgicc -lgpr -lprotobuf)

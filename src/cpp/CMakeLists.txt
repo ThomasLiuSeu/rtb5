@@ -63,6 +63,8 @@ SUBDIRS(./proto)
 
 SUBDIRS(./src)
 
+SUBDIRS(./common)
+
 
 
 
