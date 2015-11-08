@@ -40,10 +40,10 @@ ADD_LIBRARY(campaign_pb campaign.pb.cc)
 TARGET_LINK_LIBRARIES(campaign_pb mysqlclient boost_system -L/usr/local/lib -lgrpc++_unsecure -lgrpc -lgpr -lprotobuf -lpthread -ldl -lm)
 
 ADD_LIBRARY(union_pb union.pb.cc)
-TARGET_LINK_LIBRARIES(union_pb mysqlclient boost_system -L/usr/local/lib -lgrpc++_unsecure -lm -lgrpc -lgpr -lprotobuf -lpthread -ldl )
+TARGET_LINK_LIBRARIES(union_pb mysqlclient boost_system -L/usr/local/lib -lgrpc++_unsecure -lgrpc -lgpr -lprotobuf -lpthread -ldl -lm)
 
 ADD_LIBRARY(user_pb user.pb.cc)
-TARGET_LINK_LIBRARIES(user_pb mysqlclient boost_system -L/usr/local/lib -lgrpc++_unsecure -lm -lgrpc -lgpr -lprotobuf -lpthread -ldl )
+TARGET_LINK_LIBRARIES(user_pb mysqlclient boost_system -L/usr/local/lib -lgrpc++_unsecure -lm -lgrpc -lgpr -lprotobuf -lpthread -ldl -lm)
 
 ADD_LIBRARY(order_pb order.grpc.pb.cc order.pb.cc)
 TARGET_LINK_LIBRARIES(order_pb mysqlclient boost_system -L/usr/local/lib -lgrpc++_unsecure -lgrpc -lgpr -lprotobuf -lpthread -ldl click_pb -lm)
