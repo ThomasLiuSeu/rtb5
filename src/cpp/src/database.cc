@@ -1,6 +1,7 @@
 
 #include "src/database.h"
 #include <time.h>
+#include <google/protobuf/text_format.h>
 
 namespace RTB5 {
   
@@ -167,6 +168,10 @@ bool Database::GenerateParameters(const User& user, std::string* table, std::map
   (*parameters)["account"] = user.account();
   (*parameters)["password"] = user.password();
   (*parameters)["token"] = user.token();
+  std::string user_ext;
+  if (google::protobuf::TextFormat::PrintToString(user.user_ext(), &user_ext)) {
+    (*parameters)["user_ext"] = user_ext;
+  }
   return true;
 }
 

@@ -1,0 +1,2 @@
+/usr/bin/ar cr ../lib/libviglink_order_update_functor.a  CMakeFiles/viglink_order_update_functor.dir/viglink_order_update_functor.cc.o
+/usr/bin/ranlib ../lib/libviglink_order_update_functor.a

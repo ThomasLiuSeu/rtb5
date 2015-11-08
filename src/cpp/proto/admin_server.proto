@@ -1,7 +1,7 @@
 syntax = "proto3";
 
-import "union.proto";
-import "campaign.proto";
+// import "union.proto";
+// import "campaign.proto";
 import "user.proto";
 
 package RTB5;
@@ -19,47 +19,81 @@ message DeleteUserResponse {
   //
   enum OperateStatus {
     //
-    SUCCESS = 1;
+    SUCCESS = 0;
     //
-    USER_ID_NOT_EXIST = 2;
+    USER_ID_NOT_EXIST = 1;
   }
+
+  //
+  OperateStatus status = 1;
 }
 
 message AddUserRequest {
   //
-  User user;
+  User user = 1;
 }
 
 message AddUserResponse {
   //
   enum OperateStatus {
     //
-    SUCCESS = 1;
+    SUCCESS = 0;
     //
-    USER_ID_ALREADY_EXIST = 2;
+    USER_ID_ALREADY_EXIST = 1;
   }
   //
-  string token;
+  OperateStatus status = 2;
 }
 
 message UpdateUserRequest {
   //
-  User user;
+  User user = 1;
 }
 
 message UpdateUserResponse {
   //
   enum OperateStatus {
     //
-    SUCCESS = 1;
+    SUCCESS = 0;
     //
-    USER_ID_NOT_EXIST = 2;
+    USER_ID_NOT_EXIST = 1;
   }
+  //
+  OperateStatus status = 1;
 }
 
 
 message AdminRequest {
+  //
+  enum Action {
+    //
+    Add = 0;
+    //
+    Delete = 1;
+    //
+    Update = 2;
+  }
+
+  //
+  enum Object {
+    //
+    ObjUnion = 0;
+    //
+    ObjUser = 1;
+    //
+    ObjCampaign = 2;
+  }
   
+  //
+  Action action = 1;
+  //
+  Object object = 2;
+  //
+  AddUserRequest add_user_request = 3;
+  //
+  DeleteUserRequest delete_user_request = 4;
+  //
+  UpdateUserRequest update_user_request = 5;
 }
 
 message AdminResponse {

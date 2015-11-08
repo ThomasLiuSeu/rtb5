@@ -64,12 +64,7 @@ class OrderServiceImpl final: public RTB5::OrderService::Service {
   //
   Status Process(ServerContext* context, const OrderRequest* request,
                  OrderResponse* response) {
-    std::vector<Order> orders;
-    if (order_processor.Process(*request, &orders)) {
-      for (const auto& order : orders) {
-        Order* order_ptr = response->add_orders();
-        *order_ptr = order;
-      }
+    if (order_processor.Process(*request, response)) {
       return Status::OK;
     } else {
       return Status::CANCELLED;

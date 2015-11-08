@@ -48,12 +48,10 @@ int main(int argc, char **argv) {
 
     OrderClient order_client(grpc::CreateChannel("localhost:50052", grpc::InsecureCredentials()));
     if (order_client.Process(order_request, &order_response)) {
-      for (auto order : order_response.orders()) {
-        Json::Value json_value;
-        std::string error_message;
-        if(ProtoMessageToJsonValue(order_response, &json_value, &error_message)) {
-          std::cout << json_value.toStyledString();
-        }
+      Json::Value json_value;
+      std::string error_message;
+      if(ProtoMessageToJsonValue(order_response, &json_value, &error_message)) {
+        std::cout << json_value.toStyledString();
       }
     } else {
       std::cout << "Request Failed";

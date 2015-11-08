@@ -15,7 +15,7 @@ class OrderProcessor {
   //
   bool Init();
   //
-  bool Process(const OrderRequest& order_request, std::vector<Order>* orders);
+  bool Process(const OrderRequest& order_request, OrderResponse* order_response);
 
  private:
 

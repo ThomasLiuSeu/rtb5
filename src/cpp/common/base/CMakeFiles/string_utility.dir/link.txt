@@ -1,0 +1,2 @@
+/usr/bin/ar cr ../../lib/libstring_utility.a  CMakeFiles/string_utility.dir/string_utility.cc.o
+/usr/bin/ranlib ../../lib/libstring_utility.a

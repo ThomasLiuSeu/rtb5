@@ -21,7 +21,21 @@ message OrderRequest {
 
 message OrderResponse {
   //
-  repeated Order orders = 1;
+  Status status = 1;
+  //
+  OrderData data = 2;
+
+  message Status {
+    //
+    int64 error_code = 1;
+    //
+    string msg = 2;
+  }  
+  //
+  message OrderData {
+    //
+    repeated Order orders = 1;
+  }
 }
 
 message Order {

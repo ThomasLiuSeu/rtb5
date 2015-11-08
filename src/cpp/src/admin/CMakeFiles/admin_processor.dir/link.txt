@@ -1,0 +1,2 @@
+/usr/bin/ar cr ../../lib/libadmin_processor.a  CMakeFiles/admin_processor.dir/admin_processor.cc.o
+/usr/bin/ranlib ../../lib/libadmin_processor.a

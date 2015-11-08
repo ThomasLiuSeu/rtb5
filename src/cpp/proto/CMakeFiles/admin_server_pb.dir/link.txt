@@ -1,0 +1,2 @@
+/usr/bin/ar cr ../lib/libadmin_server_pb.a  CMakeFiles/admin_server_pb.dir/admin_server.grpc.pb.cc.o CMakeFiles/admin_server_pb.dir/admin_server.pb.cc.o
+/usr/bin/ranlib ../lib/libadmin_server_pb.a
