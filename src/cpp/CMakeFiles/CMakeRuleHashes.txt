@@ -1,5 +1,0 @@
-# Hashes of file build rules.
-1a1dfa086010990d9c05b050226ae140 proto/CMakeFiles/grpc_serveice
-1a1dfa086010990d9c05b050226ae140 proto/CMakeFiles/proto
-6e2bacaa2ae1a0f90645ac3e4078dee8 proto/click.grpc.pb.h
-83f5cfff07459c572818fecbaf8d5c89 proto/click.pb.h

@@ -1,2 +1,0 @@
-/usr/bin/ar cr ../../lib/libencoding.a  CMakeFiles/encoding.dir/json_to_pb.cc.o CMakeFiles/encoding.dir/pb_to_json.cc.o CMakeFiles/encoding.dir/proto_json_format.cc.o CMakeFiles/encoding.dir/percent.cpp.o
-/usr/bin/ranlib ../../lib/libencoding.a

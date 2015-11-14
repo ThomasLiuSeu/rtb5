@@ -3,11 +3,19 @@ INCLUDE_DIRECTORIES(../)
 
 SET(SOURCE_FILES rtb5_server.cc)
 
-LINK_DIRECTORIES(/usr/include /usr/local/include  ${BASE_PATH}/lib)
+LINK_DIRECTORIES(/usr/include /usr/local/include /usr/lib/x86_64-linux-gnu/ ${BASE_PATH}/lib)
 
 ADD_LIBRARY(database database.cc)
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+TARGET_LINK_LIBRARIES(database campaign_pb union_pb click_pb mysqlclient boost_system -lstdc++)
+=======
 TARGET_LINK_LIBRARIES(database campaign_pb union_pb click_pb user_pb mysqlclient boost_system)
+>>>>>>> 24d7dd385768e388fa1a694539e5226c9edf4863
+=======
+TARGET_LINK_LIBRARIES(database campaign_pb union_pb click_pb user_pb mysqlclient boost_system)
+>>>>>>> 24d7dd385768e388fa1a694539e5226c9edf4863
 
 ADD_LIBRARY(click_processor click_processor.cc)
 
@@ -27,7 +35,15 @@ TARGET_LINK_LIBRARIES(order_server order_pb click_pb user_pb order_processor -lg
 
 ADD_EXECUTABLE(admin_main admin_main.cc)
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+TARGET_LINK_LIBRARIES(admin_server click_pb user_pb click_processor -lglog -lgflags -lm)
+=======
 TARGET_LINK_LIBRARIES(admin_main click_pb user_pb click_processor -lglog -lgflags)
+>>>>>>> 24d7dd385768e388fa1a694539e5226c9edf4863
+=======
+TARGET_LINK_LIBRARIES(admin_main click_pb user_pb click_processor -lglog -lgflags)
+>>>>>>> 24d7dd385768e388fa1a694539e5226c9edf4863
 
 set(CMAKE_FIND_LIBRARY_SUFFIXES .a${CMAKE_FIND_LIBRARY_SUFFIXES})
 
