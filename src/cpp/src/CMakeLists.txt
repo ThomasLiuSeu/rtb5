@@ -19,11 +19,11 @@ TARGET_LINK_LIBRARIES(order_processor database campaign_pb union_pb click_pb mys
 
 ADD_EXECUTABLE(click_server  click_server.cc)
 
-TARGET_LINK_LIBRARIES(click_server click_pb user_pb click_processor -lglog -lgflags)
+TARGET_LINK_LIBRARIES(click_server click_pb user_pb click_processor -lglog -lgflags -lssl)
 
 ADD_EXECUTABLE(order_server  order_server.cc)
 
-TARGET_LINK_LIBRARIES(order_server order_pb click_pb user_pb order_processor -lglog -lgflags)
+TARGET_LINK_LIBRARIES(order_server order_pb click_pb user_pb order_processor -lglog -lgflags -lssl)
 
 ADD_EXECUTABLE(admin_main admin_main.cc)
 

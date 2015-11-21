@@ -14,4 +14,5 @@ sudo apt-get install perl
 sudo apt-get install libperl5.14
 sudo apt-get install libtool
 sudo apt-get install libmysqlclient-dev
+sudo apt-get install libperl-dev
 sudo autoreconf -ivf
