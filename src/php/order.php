@@ -75,7 +75,7 @@
     $conn=mysql_connect($mysql_server_name, $mysql_username, $mysql_password);
 
      // 从表中提取信息的sql语句
-    $strsql="SELECT user_id, order_id, tags, store_id, store_name, trading_volume,cashback, order_time, report_time, valid_time, currency_type, status FROM `clicks` INNER JOIN `orders` ON clicks.click_id = orders.click_id where user_id=".$user_id;
+    $strsql="SELECT user_id, order_id, tags, campaign_id, origin_url, trading_volume, commission, order_time, valid_time, currency_type, status FROM `click` INNER JOIN `order` ON click.click_id = order.click_id where user_id=".$user_id;
     if ($tags != "") 
     {
         $strsql = $strsql." and tags=\"".$tags."\"";
