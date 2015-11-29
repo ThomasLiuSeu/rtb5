@@ -31,6 +31,10 @@ class OrderUpdateFunctor {
     return (order.click_id() & 0xFFFF000000000000) + ((order.order_time() & 0xFFFFFFFF) << 16) + (order.click_id() & 0xFFFF);
   }
 
+  uint64_t GetClickTime(uint64_t click_id) {
+    return (click_id >> 16 ) & 0xFFFFFFFF;
+  }
+
  public:
   //
   HttpClient http_client;

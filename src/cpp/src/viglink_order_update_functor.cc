@@ -12,18 +12,26 @@ using namespace std;
 
 namespace RTB5 {
 
+template <class T>
+static std::string ConvertToString(T num) {
+  return boost::lexical_cast<std::string>(num);
+}
+
 bool ViglinkOrderUpdateFunctor::Init() {
   return true;
 }
 
 bool ViglinkOrderUpdateFunctor::JsonToProto(const std::string& tags, const std::string& cashback, Order* order) {
   try {
-    time_t now;
-    time(&now);
-    order->set_order_time(now);
     order->set_click_id(boost::lexical_cast<uint64_t>(tags));
+    order->set_order_time(GetClickTime(boost::lexical_cast<uint64_t>(tags)));
     order->set_commission(boost::lexical_cast<double>(cashback));
-    order->set_order_id(GenerateOrderID(*order)); 
+    order->set_cash_back(order->commission());
+    order->set_order_id(GenerateOrderID(*order));
+    // 业务逻辑暂时硬编码，后续改为配置 
+    order->set_currency_type("USD");
+    order->set_status(1);
+    order->set_trading_volume(order->commission() * 10);
   }
   catch(exception& e) {
     return false;
@@ -32,7 +40,13 @@ bool ViglinkOrderUpdateFunctor::JsonToProto(const std::string& tags, const std::
 }
 
 bool ViglinkOrderUpdateFunctor::Process(std::vector<Order>* orders) {
-  const std::string url = "https://publishers.viglink.com/service/v1/cuidRevenue?lastDate=2015%2F01%2F10&period=month&secret=5147982ce378a512af1f5da6c849f4a38febe983";
+  time_t now;
+  time(&now);
+  struct tm* ptm  = localtime(&now);
+  uint64_t year = ptm->tm_year + 1900;
+  uint64_t month = ptm->tm_mon + 1;
+  uint64_t day = ptm->tm_mday;
+  const std::string url = "https://publishers.viglink.com/service/v1/cuidRevenue?lastDate="+ ConvertToString(year) +"%2F" + ConvertToString(month) +"%2F" + ConvertToString(day) + "&period=month&secret=5147982ce378a512af1f5da6c849f4a38febe983";
   std::string response;
   const std::string file = "viglink.json";
   std::string cmd = "wget \"" + url + "\" -O " + file;

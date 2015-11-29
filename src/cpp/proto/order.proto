@@ -57,4 +57,6 @@ message Order {
   uint64 click_id = 8;
   //
   Click click = 9;
+  //
+  uint64 cash_back = 10;
 }

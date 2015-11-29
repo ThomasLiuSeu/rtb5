@@ -89,7 +89,7 @@ bool Database::Exec(const std::string& sql, std::vector<std::map<std::string, st
 std::string Database::GenerateInsertSql(const std::string& table, 
     const std::map<std::string, std::string>& parameters) {
   std::string sql;
-  sql += "INSERT INTO `" + table + "` (";
+  sql += "REPLACE INTO `" + table + "` (";
   bool first = true;
   for (const auto& parameter : parameters) {
     if (!first) {
@@ -185,6 +185,7 @@ bool Database::GenerateParameters(const Order& order, std::string* table, std::m
   (*parameters)["status"] = boost::lexical_cast<std::string>(order.status());
   (*parameters)["click_id"] = boost::lexical_cast<std::string>(order.click_id());
   (*parameters)["commission"] = boost::lexical_cast<std::string>(order.commission());
+  (*parameters)["cash_back"] = boost::lexical_cast<std::string>(order.cash_back());
   (*parameters)["trading_volume"] = boost::lexical_cast<std::string>(order.trading_volume());
   (*parameters)["order_time"] = boost::lexical_cast<std::string>(order.order_time());
   (*parameters)["valid_time"] = boost::lexical_cast<std::string>(order.valid_time());
@@ -255,6 +256,8 @@ bool Database::ParseSqlResult(const std::map<std::string, std::string>& paramete
       order->set_status(boost::lexical_cast<uint64_t>(parameter.second));      
     } else if  (parameter.first == "commission") {
       order->set_commission(boost::lexical_cast<uint64_t>(parameter.second));
+    } else if  (parameter.first == "cash_back") {
+      order->set_cash_back(boost::lexical_cast<uint64_t>(parameter.second));
     } else if  (parameter.first == "trading_volume") {
       order->set_trading_volume(boost::lexical_cast<uint64_t>(parameter.second));      
     } else if  (parameter.first == "order_time") {

@@ -1,4 +1,3 @@
-DROP DATABASE rtb5;
 CREATE DATABASE IF NOT EXISTS rtb5;
 use rtb5;
 
@@ -51,6 +50,7 @@ CREATE TABLE IF NOT EXISTS `order` (
 `order_id` BIGINT( 11 ) NOT NULL,
 `status` BIGINT( 11 ) NOT NULL,
 `click_id` BIGINT( 11 ) NOT NULL,
+`cash_back` BIGINT( 11 ) ,
 `commission` BIGINT( 11 ) ,
 `trading_volume` BIGINT( 11 ) NOT NULL,
 `order_time` BIGINT( 11 ) ,

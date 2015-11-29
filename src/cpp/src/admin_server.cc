@@ -59,10 +59,10 @@ int main(int argc, char** argv) {
   viglink.set_url_pattern("http://redirect.viglink.com?key=c569e3edee1a0b4dd14ea79c31dd172b&u={origin_url}&cuid={tags}");
 
   User user;
-  user.set_user_id(3);
+  user.set_user_id(311);
   user.set_user_name("chanet");
-  user.set_password("abcdefg2008");
-  user.set_token("3123ads");
+  user.set_password("chanet");
+  user.set_token("NDI5NDkwMTc2Mw==");
   user.set_account("account");
 
   Campaign campaign;
