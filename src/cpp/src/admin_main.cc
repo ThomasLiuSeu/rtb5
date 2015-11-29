@@ -57,29 +57,203 @@ int main(int argc, char** argv) {
   viglink.set_union_id(2);
   viglink.set_union_name("viglink");
   viglink.set_url_pattern("http://redirect.viglink.com?key=c569e3edee1a0b4dd14ea79c31dd172b&u={origin_url}&cuid={tags}");
+  database.Insert(haitao55);
+  database.Insert(viglink);
 
   User user;
-  user.set_user_id(3);
+  user.set_user_id(311);
   user.set_user_name("chanet");
   user.set_password("abcdefg2008");
   user.set_token("3123ads");
   user.set_account("account");
-
-  Campaign campaign;
-  campaign.set_campaign_id(1);
-  campaign.set_union_id(1);
-  campaign.set_campaign_name("6pm");
-  campaign.set_pattern("baidu");
-  campaign.set_percent(0.07);
-  database.Insert(haitao55);
-  database.Insert(viglink);
-  database.Insert(campaign);
-  campaign.set_campaign_id(2);
-  campaign.set_union_id(2);
-  campaign.set_campaign_name("yama");
-  campaign.set_pattern("qq");
-  campaign.set_percent(0.06);
-  database.Insert(campaign);
   database.Insert(user);
-
+  {
+    Campaign campaign;
+    campaign.set_campaign_id(1);
+    campaign.set_union_id(1);
+    campaign.set_campaign_name("6pm");
+    campaign.set_pattern("6pm");
+    campaign.set_percent(0.06);
+    database.Insert(campaign);
+  }
+  {
+    Campaign campaign;
+    campaign.set_campaign_id(2);
+    campaign.set_union_id(1);
+    campaign.set_campaign_name("skinstore");
+    campaign.set_pattern("skinstore");
+    campaign.set_percent(0.06);
+    database.Insert(campaign);
+  }
+  {
+    Campaign campaign;
+    campaign.set_campaign_id(3);
+    campaign.set_union_id(1);
+    campaign.set_campaign_name("uggaustralia");
+    campaign.set_pattern("uggaustralia");
+    campaign.set_percent(0.06);
+    database.Insert(campaign);
+  }
+  {
+    Campaign campaign;
+    campaign.set_campaign_id(4);
+    campaign.set_union_id(1);
+    campaign.set_campaign_name("vitacost");
+    campaign.set_pattern("vitacost");
+    campaign.set_percent(0.06);
+    database.Insert(campaign);
+  }
+  {
+    Campaign campaign;
+    campaign.set_campaign_id(5);
+    campaign.set_union_id(1);
+    campaign.set_campaign_name("carters");
+    campaign.set_pattern("carters");
+    campaign.set_percent(0.06);
+    database.Insert(campaign);
+  }
+  {
+    Campaign campaign;
+    campaign.set_campaign_id(6);
+    campaign.set_union_id(1);
+    campaign.set_campaign_name("joesnewbalanceoutlet");
+    campaign.set_pattern("joesnewbalanceoutlet");
+    campaign.set_percent(0.06);
+    database.Insert(campaign);
+  }
+  {
+    Campaign campaign;
+    campaign.set_campaign_id(7);
+    campaign.set_union_id(1);
+    campaign.set_campaign_name("bloomingdales");
+    campaign.set_pattern("bloomingdales");
+    campaign.set_percent(0.06);
+    database.Insert(campaign);
+  }
+  {
+    Campaign campaign;
+    campaign.set_campaign_id(8);
+    campaign.set_union_id(1);
+    campaign.set_campaign_name("origins");
+    campaign.set_pattern("origins");
+    campaign.set_percent(0.06);
+    database.Insert(campaign);
+  }
+  {
+    Campaign campaign;
+    campaign.set_campaign_id(9);
+    campaign.set_union_id(1);
+    campaign.set_campaign_name("clinique");
+    campaign.set_pattern("clinique");
+    campaign.set_percent(0.06);
+    database.Insert(campaign);
+  }
+  {
+    Campaign campaign;
+    campaign.set_campaign_id(10);
+    campaign.set_union_id(1);
+    campaign.set_campaign_name("esteelauder");
+    campaign.set_pattern("esteelauder");
+    campaign.set_percent(0.06);
+    database.Insert(campaign);
+  }
+  {
+    Campaign campaign;
+    campaign.set_campaign_id(11);
+    campaign.set_union_id(1);
+    campaign.set_campaign_name("clinique");
+    campaign.set_pattern("clinique");
+    campaign.set_percent(0.06);
+    database.Insert(campaign);
+  }
+  {
+    Campaign campaign;
+    campaign.set_campaign_id(12);
+    campaign.set_union_id(1);
+    campaign.set_campaign_name("esteelauder");
+    campaign.set_pattern("esteelauder");
+    campaign.set_percent(0.06);
+    database.Insert(campaign);
+  }
+  {
+    Campaign campaign;
+    campaign.set_campaign_id(13);
+    campaign.set_union_id(1);
+    campaign.set_campaign_name("saksfifthavenue");
+    campaign.set_pattern("saksfifthavenue");
+    campaign.set_percent(0.06);
+    database.Insert(campaign);
+  }
+  {
+    Campaign campaign;
+    campaign.set_campaign_id(14);
+    campaign.set_union_id(1);
+    campaign.set_campaign_name("ssense");
+    campaign.set_pattern("ssense");
+    campaign.set_percent(0.06);
+    database.Insert(campaign);
+  }
+  {
+    Campaign campaign;
+    campaign.set_campaign_id(15);
+    campaign.set_union_id(1);
+    campaign.set_campaign_name("toryburch");
+    campaign.set_pattern("toryburch");
+    campaign.set_percent(0.06);
+    database.Insert(campaign);
+  }
+  {
+    Campaign campaign;
+    campaign.set_campaign_id(16);
+    campaign.set_union_id(1);
+    campaign.set_campaign_name("victoriassecret");
+    campaign.set_pattern("victoriassecret");
+    campaign.set_percent(0.06);
+    database.Insert(campaign);
+  }
+  {
+    Campaign campaign;
+    campaign.set_campaign_id(17);
+    campaign.set_union_id(1);
+    campaign.set_campaign_name("ralphlauren");
+    campaign.set_pattern("ralphlauren");
+    campaign.set_percent(0.06);
+    database.Insert(campaign);
+  }
+  {
+    Campaign campaign;
+    campaign.set_campaign_id(18);
+    campaign.set_union_id(1);
+    campaign.set_campaign_name("chemistwarehouse");
+    campaign.set_pattern("chemistwarehouse");
+    campaign.set_percent(0.06);
+    database.Insert(campaign);
+  }
+  {
+    Campaign campaign;
+    campaign.set_campaign_id(19);
+    campaign.set_union_id(2);
+    campaign.set_campaign_name("booking");
+    campaign.set_pattern("booking");
+    campaign.set_percent(0.06);
+    database.Insert(campaign);
+  }
+  {
+    Campaign campaign;
+    campaign.set_campaign_id(20);
+    campaign.set_union_id(1);
+    campaign.set_campaign_name("saksoff5th");
+    campaign.set_pattern("saksoff5th");
+    campaign.set_percent(0.06);
+    database.Insert(campaign);
+  }
+  {
+    Campaign campaign;
+    campaign.set_campaign_id(21);
+    campaign.set_union_id(1);
+    campaign.set_campaign_name("shop-apotheke");
+    campaign.set_pattern("shop-apotheke");
+    campaign.set_percent(0.06);
+    database.Insert(campaign);
+  }
 }
