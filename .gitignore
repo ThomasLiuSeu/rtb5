@@ -27,6 +27,7 @@ Thumbs.db
 *.sbr
 *.a
 obj/
+thirdparty/*
 [Rr]elease*/
 _ReSharper*/
 [Tt]est[Rr]esult*
