@@ -15,7 +15,6 @@ using namespace std;
 using namespace cgicc;
 using namespace RTB5;
 
-<<<<<<< HEAD
 void ParseGetToUnion(Union* upper_union, Cgicc& cgi) {
   form_iterator union_id = cgi.getElement("union_id");
   if (union_id != cgi.getElements().end()) {
@@ -74,66 +73,6 @@ void ParseGetToCampaign(Campaign* campaign, Cgicc& cgi) {
   form_iterator percent = cgi.getElement("percent");
   if (percent != cgi.getElements().end()) {
     campaign->set_percent(boost::lexical_cast<double>(**percent));
-=======
-void ParseAddUnionRequst(AddUnionRequest* add_union_request, Cgicc& cgi) {
-  form_iterator union_id = cgi.getElement("union_id");
-  if (union_id != cgi.getElements().end()) {
-    add_union_request->mutable_upper_union()->set_union_id(boost::lexical_cast<uint64_t>(**union_id));
-  }
-  form_iterator union_name = cgi.getElement("union_name");
-  if (union_name != cgi.getElements().end()) {
-    add_union_request->mutable_upper_union()->set_union_name(**union_name);
-  } 
-  form_iterator url_pattern = cgi.getElement("url_pattern");
-  if (url_pattern != cgi.getElements().end()) {
-    add_union_request->mutable_upper_union()->set_url_pattern(**url_pattern);
-  }
-}
-
-void ParseAddUserRequst(AddUserRequest* add_user_request, Cgicc& cgi) {
-  form_iterator user_id = cgi.getElement("user_id");
-  if (user_id != cgi.getElements().end()) {
-    add_user_request->mutable_user()->set_user_id(boost::lexical_cast<uint64_t>(**user_id));
-  }
-  form_iterator user_name = cgi.getElement("user_name");
-  if (user_name != cgi.getElements().end()) {
-    add_user_request->mutable_user()->set_user_name(**user_name);
-  } 
-  form_iterator account = cgi.getElement("account");
-  if (account != cgi.getElements().end()) {
-    add_user_request->mutable_user()->set_account(**account);
-  }
-  form_iterator password = cgi.getElement("password");
-  if (password != cgi.getElements().end()) {
-    add_user_request->mutable_user()->set_password(**password);
-  }
-  form_iterator token = cgi.getElement("token");
-  if (token != cgi.getElements().end()) {
-    add_user_request->mutable_user()->set_token(**token);
-  }
-}
-
-void ParseAddCampaignRequst(AddCampaignRequest* add_campaign_request, Cgicc& cgi) {
-  form_iterator campaign_id = cgi.getElement("campaign_id");
-  if (campaign_id != cgi.getElements().end()) {
-    add_campaign_request->mutable_campaign()->set_campaign_id(boost::lexical_cast<uint64_t>(**campaign_id));
-  }
-  form_iterator campaign_name = cgi.getElement("campaign_name");
-  if (campaign_name != cgi.getElements().end()) {
-    add_campaign_request->mutable_campaign()->set_campaign_name(**campaign_name);
-  } 
-  form_iterator union_id = cgi.getElement("union_id");
-  if (union_id != cgi.getElements().end()) {
-    add_campaign_request->mutable_campaign()->set_union_id(boost::lexical_cast<uint64_t>(**union_id));
-  } 
-  form_iterator pattern = cgi.getElement("pattern");
-  if (pattern != cgi.getElements().end()) {
-    add_campaign_request->mutable_campaign()->set_pattern(**pattern);
-  } 
-  form_iterator percent = cgi.getElement("percent");
-  if (percent != cgi.getElements().end()) {
-    add_campaign_request->mutable_campaign()->set_percent(boost::lexical_cast<double>(**percent));
->>>>>>> f93cdb02df5451d54c49fb3b7a8c561b16c57623
   } 
 }
 
@@ -153,11 +92,8 @@ int main(int argc, char **argv) {
         admin_request.set_action(AdminRequest_Action_Delete);
       } else if (**action == "update") {
         admin_request.set_action(AdminRequest_Action_Update);
-<<<<<<< HEAD
       } else if (**action == "query") {
         admin_request.set_action(AdminRequest_Action_Query);
-=======
->>>>>>> f93cdb02df5451d54c49fb3b7a8c561b16c57623
       } else {
         std::cout << "action invalid";
       }
@@ -180,7 +116,6 @@ int main(int argc, char **argv) {
       case AdminRequest_Action_Add:
         switch (admin_request.object()) {
           case AdminRequest_Object_ObjUnion:
-<<<<<<< HEAD
             ParseGetToUnion(admin_request.mutable_add_union_request()->mutable_upper_union(), cgi);
             break;
           case AdminRequest_Object_ObjUser:
@@ -188,15 +123,6 @@ int main(int argc, char **argv) {
             break;
           case AdminRequest_Object_ObjCampaign:
             ParseGetToCampaign(admin_request.mutable_add_campaign_request()->mutable_campaign(), cgi);
-=======
-            ParseAddUnionRequst(admin_request.mutable_add_union_request(), cgi);
-            break;
-          case AdminRequest_Object_ObjUser:
-            ParseAddUserRequst(admin_request.mutable_add_user_request(), cgi);
-            break;
-          case AdminRequest_Object_ObjCampaign:
-            ParseAddCampaignRequst(admin_request.mutable_add_campaign_request(), cgi);
->>>>>>> f93cdb02df5451d54c49fb3b7a8c561b16c57623
             break;
         }
         break;
@@ -262,10 +188,19 @@ int main(int argc, char **argv) {
         case AdminRequest_Action_Update:
           switch (admin_request.object()) {
             case AdminRequest_Object_ObjUnion:
+              if(ProtoMessageToJsonValue(admin_response.update_union_response(), &json_value, &error_message)) {
+                std::cout << json_value.toStyledString();
+              }
               break;
             case AdminRequest_Object_ObjUser:
+              if(ProtoMessageToJsonValue(admin_response.update_user_response(), &json_value, &error_message)) {
+                std::cout << json_value.toStyledString();
+              }
               break;
             case AdminRequest_Object_ObjCampaign:
+              if(ProtoMessageToJsonValue(admin_response.update_campaign_response(), &json_value, &error_message)) {
+                std::cout << json_value.toStyledString();
+              }
               break;
           }
           break;
