@@ -228,6 +228,116 @@ message QueryUnionResponse {
 
 //-----------------------------------------整体--------------------------------------------------
 
+//-----------------------------------------Campaign--------------------------------------------------
+
+message DeleteCampaignRequest {
+  //
+  uint64 cmapaign_id = 1;
+}
+
+message DeleteCampaignResponse {
+  //
+  enum OperateStatus {
+    //
+    SUCCESS = 0;
+    //
+    CAMPAIGN_ID_NOT_EXIST = 1;
+  }
+
+  //
+  OperateStatus status = 1;
+}
+
+message AddCampaignRequest {
+  //
+  Campaign campaign = 1;
+}
+
+message AddCampaignResponse {
+  //
+  enum OperateStatus {
+    //
+    SUCCESS = 0;
+    //
+    CAMPAIGN_ID_ALREADY_EXIST = 1;
+  }
+  //
+  OperateStatus status = 2;
+}
+
+message UpdateCampaignRequest {
+  //
+  Campaign campaign = 1;
+}
+
+message UpdateCampaignResponse {
+  //
+  enum OperateStatus {
+    //
+    SUCCESS = 0;
+    //
+    CAMPAIGN_ID_NOT_EXIST = 1;
+  }
+  //
+  OperateStatus status = 1;
+}
+
+//-----------------------------------------Union--------------------------------------------------
+
+message DeleteUnionRequest {
+  //
+  uint64 union_id = 1;
+}
+
+message DeleteUnionResponse {
+  //
+  enum OperateStatus {
+    //
+    SUCCESS = 0;
+    //
+    UNION_ID_NOT_EXIST = 1;
+  }
+
+  //
+  OperateStatus status = 1;
+}
+
+message AddUnionRequest {
+  //
+  Union upper_union = 1;
+}
+
+message AddUnionResponse {
+  //
+  enum OperateStatus {
+    //
+    SUCCESS = 0;
+    //
+    UNION_ID_ALREADY_EXIST = 1;
+  }
+  //
+  OperateStatus status = 2;
+}
+
+message UpdateUnionRequest {
+  //
+  Union upper_union = 1;
+}
+
+message UpdateUnionResponse {
+  //
+  enum OperateStatus {
+    //
+    SUCCESS = 0;
+    //
+    UNION_ID_NOT_EXIST = 1;
+  }
+  //
+  OperateStatus status = 1;
+}
+
+//-----------------------------------------整体--------------------------------------------------
+
 message AdminRequest {
   //
   enum Action {
@@ -273,12 +383,15 @@ message AdminRequest {
   DeleteUnionRequest delete_union_request = 10;
   //
   UpdateUnionRequest update_union_request = 11;
+<<<<<<< HEAD
   //
   QueryUserRequest query_user_request = 12;
   //
   QueryCampaignRequest query_campaign_request = 13;
   //
   QueryUnionRequest query_union_request = 14;
+=======
+>>>>>>> f93cdb02df5451d54c49fb3b7a8c561b16c57623
 }
 
 message AdminResponse {
@@ -300,10 +413,13 @@ message AdminResponse {
   DeleteUnionResponse delete_union_response = 10;
   //
   UpdateUnionResponse update_union_response = 11;
+<<<<<<< HEAD
   //
   QueryUserResponse query_user_response = 12;
   //
   QueryCampaignResponse query_campaign_response = 13;
   //
   QueryUnionResponse query_union_response = 14;
+=======
+>>>>>>> f93cdb02df5451d54c49fb3b7a8c561b16c57623
 }

@@ -42,6 +42,7 @@ bool AdminProcessor::Process(const AdminRequest& admin_request,
         case AdminRequest_Object_ObjCampaign:
           break;
       }
+<<<<<<< HEAD
       break; 
     case AdminRequest_Action_Query:
       switch (admin_request.object()) {
@@ -56,6 +57,9 @@ bool AdminProcessor::Process(const AdminRequest& admin_request,
           break;
       }
       break;   
+=======
+      break;  
+>>>>>>> f93cdb02df5451d54c49fb3b7a8c561b16c57623
   }
   return true; 
 }
@@ -88,6 +92,7 @@ bool AdminProcessor::Process(const AddUnionRequest& add_union_request,
     add_union_response->set_status(AddUnionResponse_OperateStatus_UNION_ID_ALREADY_EXIST);
   }
   return true;
+<<<<<<< HEAD
 }
 //
 bool AdminProcessor::Process(const QueryUserRequest& query_user_request,
@@ -134,6 +139,8 @@ bool AdminProcessor::Process(const QueryUnionRequest& query_union_request,
     query_union_response->set_status(QueryUnionResponse_OperateStatus_FAILED);
   }
   return true;
+=======
+>>>>>>> f93cdb02df5451d54c49fb3b7a8c561b16c57623
 }
 //
 bool AdminProcessor::Init() {

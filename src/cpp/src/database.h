@@ -131,9 +131,12 @@ class Database {
     } else if (std::is_same<Record, Click>::value){
       table = "`click`";
       condition += " click_id=";
+<<<<<<< HEAD
     } else if (std::is_same<Record, User>::value){
       table = "`user`";
       condition += " user_id=";
+=======
+>>>>>>> f93cdb02df5451d54c49fb3b7a8c561b16c57623
     } else if (std::is_same<Record, Order>::value){
       table = " `click` INNER JOIN `order` ON click.click_id = order.click_id ";
       condition += " order_id=";

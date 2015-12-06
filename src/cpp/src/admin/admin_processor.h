@@ -27,6 +27,7 @@ class AdminProcessor {
   //
   bool Process(const AddUnionRequest& add_union_request,
                AddUnionResponse* add_union_response);
+<<<<<<< HEAD
   //
   bool Process(const QueryUserRequest& query_user_request,
                QueryUserResponse* query_user_response);
@@ -36,6 +37,9 @@ class AdminProcessor {
   //
   bool Process(const QueryUnionRequest& add_union_request,
                QueryUnionResponse* query_union_response);
+=======
+
+>>>>>>> f93cdb02df5451d54c49fb3b7a8c561b16c57623
  private:
 
 
