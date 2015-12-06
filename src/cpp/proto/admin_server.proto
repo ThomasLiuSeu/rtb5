@@ -1,7 +1,7 @@
 syntax = "proto3";
 
-// import "union.proto";
-// import "campaign.proto";
+import "union.proto";
+import "campaign.proto";
 import "user.proto";
 
 package RTB5;
@@ -9,6 +9,8 @@ package RTB5;
 service AdminService {
   rpc Process (AdminRequest) returns (AdminResponse) {}
 }
+
+//-----------------------------------------User--------------------------------------------------
 
 message DeleteUserRequest {
   //
@@ -63,6 +65,116 @@ message UpdateUserResponse {
 }
 
 
+//-----------------------------------------Campaign--------------------------------------------------
+
+message DeleteCampaignRequest {
+  //
+  uint64 cmapaign_id = 1;
+}
+
+message DeleteCampaignResponse {
+  //
+  enum OperateStatus {
+    //
+    SUCCESS = 0;
+    //
+    CAMPAIGN_ID_NOT_EXIST = 1;
+  }
+
+  //
+  OperateStatus status = 1;
+}
+
+message AddCampaignRequest {
+  //
+  Campaign campaign = 1;
+}
+
+message AddCampaignResponse {
+  //
+  enum OperateStatus {
+    //
+    SUCCESS = 0;
+    //
+    CAMPAIGN_ID_ALREADY_EXIST = 1;
+  }
+  //
+  OperateStatus status = 2;
+}
+
+message UpdateCampaignRequest {
+  //
+  Campaign campaign = 1;
+}
+
+message UpdateCampaignResponse {
+  //
+  enum OperateStatus {
+    //
+    SUCCESS = 0;
+    //
+    CAMPAIGN_ID_NOT_EXIST = 1;
+  }
+  //
+  OperateStatus status = 1;
+}
+
+//-----------------------------------------Union--------------------------------------------------
+
+message DeleteUnionRequest {
+  //
+  uint64 union_id = 1;
+}
+
+message DeleteUnionResponse {
+  //
+  enum OperateStatus {
+    //
+    SUCCESS = 0;
+    //
+    UNION_ID_NOT_EXIST = 1;
+  }
+
+  //
+  OperateStatus status = 1;
+}
+
+message AddUnionRequest {
+  //
+  Union upper_union = 1;
+}
+
+message AddUnionResponse {
+  //
+  enum OperateStatus {
+    //
+    SUCCESS = 0;
+    //
+    UNION_ID_ALREADY_EXIST = 1;
+  }
+  //
+  OperateStatus status = 2;
+}
+
+message UpdateUnionRequest {
+  //
+  Union upper_union = 1;
+}
+
+message UpdateUnionResponse {
+  //
+  enum OperateStatus {
+    //
+    SUCCESS = 0;
+    //
+    UNION_ID_NOT_EXIST = 1;
+  }
+  //
+  OperateStatus status = 1;
+}
+
+//-----------------------------------------整体--------------------------------------------------
+
 message AdminRequest {
   //
   enum Action {
@@ -94,8 +206,37 @@ message AdminRequest {
   DeleteUserRequest delete_user_request = 4;
   //
   UpdateUserRequest update_user_request = 5;
+  //
+  AddCampaignRequest add_campaign_request = 6;
+  //
+  DeleteCampaignRequest delete_campaign_request = 7;
+  //
+  UpdateCampaignRequest update_campaign_request = 8;
+  //
+  AddUnionRequest add_union_request = 9;
+  //
+  DeleteUnionRequest delete_union_request = 10;
+  //
+  UpdateUnionRequest update_union_request = 11;
 }
 
 message AdminResponse {
-
+  //
+  AddUserResponse add_user_response = 3;
+  //
+  DeleteUserResponse delete_user_response = 4;
+  //
+  UpdateUserResponse update_user_response = 5;
+  //
+  AddCampaignResponse add_campaign_response = 6;
+  //
+  DeleteCampaignResponse delete_campaign_response = 7;
+  //
+  UpdateCampaignResponse update_campaign_response = 8;
+  //
+  AddUnionResponse add_union_response = 9;
+  //
+  DeleteUnionResponse delete_union_response = 10;
+  //
+  UpdateUnionResponse update_union_response = 11;
 }

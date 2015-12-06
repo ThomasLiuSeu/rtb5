@@ -34,6 +34,19 @@ bool OrderUpdateProcessor::Init() {
   functors.push_back(viglink);
   return true;
 }
+//
+bool OrderUpdateProcessor::GetClickInfo(std::vector<Order>* orders) {
+  for (auto order : *orders) {
+    if (database.Query(order.click_id(), order.mutable_click())) {
+      Campaign campaign;
+      if (database.Query(order.click().campaign_id(), &campaign)) {
+        order.set_cash_back(order.commission() * campaign.percent());
+      }
+    }
+  }
+  return true;
+}
+//
 OrderUpdateProcessor::~OrderUpdateProcessor() {
   for (auto& functor : functors) {
     delete functor;
