@@ -1,4 +1,4 @@
-<?php 
+<?php header('Access-Control-Allow-Origin:*');
     // ini_set("display_errors", "On");
     // error_reporting(E_ALL | E_STRICT);
     $mysql_server_name="localhost"; //数据库服务器名称

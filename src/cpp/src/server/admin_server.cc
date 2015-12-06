@@ -76,7 +76,7 @@ class AdminServiceImpl final: public RTB5::AdminService::Service {
 };
 
 bool RunServer() {
-  std::string server_address("0.0.0.0:50051");
+  std::string server_address("0.0.0.0:50053");
   AdminServiceImpl service;
   if (!service.Init()) {
     LOG(ERROR) << "Init Failed";

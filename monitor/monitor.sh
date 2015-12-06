@@ -20,7 +20,9 @@ CheckMemory() {
     /etc/init.d/apache2 restart
     killall -9 click_server
     killall -9 order_server
+    killall -9 admin_server
     nohup ./admin_main &>../admin_main.log &
+    nohup ./admin_server &>../admin_server.log &
     nohup ./click_server &>../click_sever.log &
     nohup ./order_server &>../order_server.log &
   fi

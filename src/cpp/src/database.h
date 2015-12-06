@@ -37,8 +37,8 @@ class Database {
   }
   //
   template <typename Record>
-  bool Load(std::vector<Record>* records) {
-    std::string sql = GenerateSelectSql<Record>();
+  bool Load(std::vector<Record>* records, uint64_t record_id = 0) {
+    std::string sql = GenerateSelectSql<Record>(record_id);
     std::vector<std::map<std::string, std::string> > results;
     if (!Exec(sql, &results)) {
       return false;
@@ -66,14 +66,18 @@ class Database {
     }
     return true;
   }
-  // 
-  bool Query(uint64_t click_id, Click* click);
-  //
-  bool Query(uint64_t order_id, Order* order);
-  //
-  bool Query(uint64_t campaign_id, Campaign* campaign);
-  //
-  bool Query(uint64_t user_id, User* user);
+  template <typename Record>
+  bool Query(uint64_t record_id, Record* record) {
+    std::vector<Record> records;
+    if (!Load(&records, record_id)) {
+      return false;
+    }
+    if (records.size() != 1) {
+      return false;
+    }
+    record->CopyFrom(records[0]);
+    return true;
+  }
   //
   std::string GenerateConditionSql(const OrderRequest& order_request) {
     std::string sql = " where ";
@@ -115,19 +119,31 @@ class Database {
   std::string GenerateInsertSql(const std::string& table, const std::map<std::string, std::string>& parameters);
   //
   template <typename Record>
-  std::string GenerateSelectSql() {
+  std::string GenerateSelectSql(uint64_t record_id = 0) {
     std::string table = "";
+    std::string condition = "where ";
     if (std::is_same<Record, Union>::value) {
       table = "`union`";
+      condition += " union_id=";
     } else if (std::is_same<Record, Campaign>::value){
-      table = "`campaign`";     
+      table = "`campaign`";
+      condition += " campaign_id=";
     } else if (std::is_same<Record, Click>::value){
       table = "`click`";
+      condition += " click_id=";
+    } else if (std::is_same<Record, User>::value){
+      table = "`user`";
+      condition += " user_id=";
     } else if (std::is_same<Record, Order>::value){
       table = " `click` INNER JOIN `order` ON click.click_id = order.click_id ";
+      condition += " order_id=";
     }
     std::string sql;
     sql += "SELECT * FROM " + table;
+    if (record_id != 0) {
+      condition += boost::lexical_cast<std::string>(record_id);
+      sql += condition;
+    }
     return sql;
   }
   //
@@ -148,6 +164,8 @@ class Database {
   bool ParseSqlResult(const std::map<std::string, std::string>& parameters, Order* order);
   //
   bool ParseSqlResult(const std::map<std::string, std::string>& parameters, Click* click);
+  //
+  bool ParseSqlResult(const std::map<std::string, std::string>& parameters, User* user);
 
  private:
   //

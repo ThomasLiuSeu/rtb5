@@ -52,7 +52,7 @@ int main(int argc, char** argv) {
   haitao55.set_union_id(1);
   haitao55.set_union_name("55haitao");
   haitao55.set_url_pattern("http://union.55haitao.com/index.php?mod=go"
-      "&op=multiple&token=ZhZIC5HluW3vVdlO&url={origin_url}&tags={tags}");
+      "&op=multiple&token=ZhZIC5HluW3vVdlO&url={origin_url}&tag={tags}");
   Union viglink;
   viglink.set_union_id(2);
   viglink.set_union_name("viglink");
@@ -253,6 +253,88 @@ int main(int argc, char** argv) {
     campaign.set_union_id(1);
     campaign.set_campaign_name("shop-apotheke");
     campaign.set_pattern("shop-apotheke");
+    campaign.set_percent(0.06);
+    database.Insert(campaign);
+  }
+  {
+    Campaign campaign;
+    campaign.set_campaign_id(21);
+    campaign.set_union_id(1);
+    campaign.set_campaign_name("shop-apotheke");
+    campaign.set_pattern("shop-apotheke");
+    campaign.set_percent(0.06);
+    database.Insert(campaign);
+  }
+
+  {
+    Campaign campaign;
+    campaign.set_campaign_id(21);
+    campaign.set_union_id(1);
+    campaign.set_campaign_name("ASOS USA");
+    campaign.set_pattern(".asos.");
+    campaign.set_percent(0.06);
+    database.Insert(campaign);
+  }
+  {
+    Campaign campaign;
+    campaign.set_campaign_id(22);
+    campaign.set_union_id(1);
+    campaign.set_campaign_name("Topshop UK");
+    campaign.set_pattern("topshop");
+    campaign.set_percent(0.06);
+    database.Insert(campaign);
+  }
+  {
+    Campaign campaign;
+    campaign.set_campaign_id(28);
+    campaign.set_union_id(1);
+    campaign.set_campaign_name("Macys");
+    campaign.set_pattern(".macys.");
+    campaign.set_percent(0.06);
+    database.Insert(campaign);
+  }
+  {
+    Campaign campaign;
+    campaign.set_campaign_id(23);
+    campaign.set_union_id(1);
+    campaign.set_campaign_name("Neiman Marcus");
+    campaign.set_pattern(".neimanmarcus.");
+    campaign.set_percent(0.06);
+    database.Insert(campaign);
+  }
+  {
+    Campaign campaign;
+    campaign.set_campaign_id(24);
+    campaign.set_union_id(1);
+    campaign.set_campaign_name("Neiman Marcus");
+    campaign.set_pattern(".neimanmarcus.");
+    campaign.set_percent(0.06);
+    database.Insert(campaign);
+  }
+  {
+    Campaign campaign;
+    campaign.set_campaign_id(25);
+    campaign.set_union_id(1);
+    campaign.set_campaign_name("Bobbi Brown");
+    campaign.set_pattern(".bobbibrowncosmetics.");
+    campaign.set_percent(0.06);
+    database.Insert(campaign);
+  }
+  {
+    Campaign campaign;
+    campaign.set_campaign_id(26);
+    campaign.set_union_id(1);
+    campaign.set_campaign_name("FinishLine");
+    campaign.set_pattern(".finishline.");
+    campaign.set_percent(0.06);
+    database.Insert(campaign);
+  }
+  {
+    Campaign campaign;
+    campaign.set_campaign_id(27);
+    campaign.set_union_id(1);
+    campaign.set_campaign_name("Kiehls");
+    campaign.set_pattern(".kiehls.");
     campaign.set_percent(0.06);
     database.Insert(campaign);
   }

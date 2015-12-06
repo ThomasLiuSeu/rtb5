@@ -1,0 +1,41 @@
+<html>
+<head>
+    <script src="webroot/lib/jquery-1.6.js"></script>
+    <!--	<script src="webroot/js/utils/commonUtil.js"></script> -->
+    <!-- test -->
+    <link rel="stylesheet" type="text/css" href="webroot/css/main.css">
+    <script>
+        var mySite = "http://www.rtb5.com/cgi-bin/admin_cgi";
+        var newSiteUrl;
+        function submitClick() {
+            var tempSite = this.mySite + "?";
+            $.each($(".userInput"), function (idx, rec) {
+                tempSite += rec.id + "=" + escape(rec.value || "") + "&";
+            });
+            if (tempSite.lastIndexOf('&') > 0) {
+                tempSite = tempSite.substr(0, tempSite.length - 1);
+            }
+            $("#result")[0].value = tempSite;
+        }
+
+        function onJump() {
+            var destSite = $("#result")[0].value;
+            window.location.href = destSite;
+        }
+    </script>
+    <title></title>
+</head>
+<body>
+Action <input type="text" id="action" class="userInput"><br>
+Object <input type="text" id="object" class="userInput"><br>
+Campaign Id <input type="text" id="campaign_id" class="userInput"><br>
+Union Id <input type="text" id="union_id" class="userInput"><br>
+Campaign Name <input type="text" id="campaign_name" class="userInput"><br>
+Pattern <input type="text" id="pattern" class="userInput"><br>
+Percent <input type="text" id="percent" class="userInput"><br>
+<input type="submit" value="Compute URL" onclick="submitClick()">
+<br><br>
+<textarea id="result"></textarea><br>
+<input type="submit" value="Jump URL" onclick="onJump()">
+</body>
+</html>

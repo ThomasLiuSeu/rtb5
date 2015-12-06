@@ -20,7 +20,8 @@ class OrderUpdateProcessor {
   bool Process(std::vector<Order>* orders);
 
  private:
-
+  //
+  bool GetClickInfo(std::vector<Order>* orders);
 
  private:
   //

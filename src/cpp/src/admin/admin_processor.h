@@ -18,7 +18,24 @@ class AdminProcessor {
   bool Init();
   //
   bool Process(const AdminRequest& admin_request, AdminResponse* admin_response);
-
+  //
+  bool Process(const AddUserRequest& add_user_request,
+               AddUserResponse* add_user_response);
+  //
+  bool Process(const AddCampaignRequest& add_campaign_request,
+               AddCampaignResponse* add_paign_response);
+  //
+  bool Process(const AddUnionRequest& add_union_request,
+               AddUnionResponse* add_union_response);
+  //
+  bool Process(const QueryUserRequest& query_user_request,
+               QueryUserResponse* query_user_response);
+  //
+  bool Process(const QueryCampaignRequest& query_campaign_request,
+               QueryCampaignResponse* query_paign_response);
+  //
+  bool Process(const QueryUnionRequest& add_union_request,
+               QueryUnionResponse* query_union_response);
  private:
 
 

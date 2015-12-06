@@ -26,7 +26,9 @@ bool ClickProcessor::Process(Click* click) {
     click->set_second_jump_url(click->origin_url());
   }
   if (!database.Insert(*click)) {
+    database.Close();
     LOG(ERROR) << "Insert Click Failed:" << click->Utf8DebugString();
+    Init();
   }
   return true;
 }

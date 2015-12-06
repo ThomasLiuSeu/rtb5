@@ -206,6 +206,23 @@ bool Database::ParseSqlResult(const std::map<std::string, std::string>& paramete
   return true;
 }
 
+bool Database::ParseSqlResult(const std::map<std::string, std::string>& parameters, User* user) {
+  for (const auto& parameter : parameters) {
+    if (parameter.first == "user_id") {
+      user->set_user_id(boost::lexical_cast<uint64_t>(parameter.second));      
+    } else if  (parameter.first == "user_name") {
+      user->set_user_name(parameter.second);
+    } else if  (parameter.first == "account") {
+      user->set_account(parameter.second);
+    } else if  (parameter.first == "password") {
+      user->set_password(parameter.second);
+    } else if  (parameter.first == "token") {
+      user->set_token(parameter.second);
+    }
+  }
+  return true;
+}
+
 bool Database::ParseSqlResult(const std::map<std::string, std::string>& parameters, Campaign* campaign) {
   for (const auto& parameter : parameters) {
     if (parameter.first == "campaign_id") {
