@@ -7,6 +7,7 @@
 Ext.onReady(function() {
     Ext.QuickTips.init();
 
+    var baseUrl = "http://www.rtb5.com/cgi-bin/admin_cgi?";
     // NOTE: This is an example showing simple state management. During development,
     // it is generally best to disable state management as dynamically-generated ids
     // can change across page loads, leading to unpredictable results.  The developer
@@ -54,7 +55,9 @@ Ext.onReady(function() {
     });
 
 
-    var cm = new Ext.grid.ColumnModel([new Ext.grid.CheckboxSelectionModel(), {
+    var cm = new Ext.grid.ColumnModel([
+        new Ext.grid.CheckboxSelectionModel(), 
+    {
         id: 'union_id',
         header: 'Union Id',
         width: "100%",
@@ -87,7 +90,7 @@ Ext.onReady(function() {
             xtype: 'button',
             text: '添加',
             iconCls: 'icon-add',
-            handler: aaa
+            handler: addUnion
         },
         {
             xtype: 'button',
@@ -111,12 +114,7 @@ Ext.onReady(function() {
         title: 'Union Grid',
         // config options for stateful behavior
         stateful: true,
-        stateId: 'grid',
-        listeners : {
-            "load" : function() {
-                alert(123)
-            }
-        }
+        stateId: 'grid'
     });
 
     var editorform = new Ext.form.FormPanel({
@@ -128,22 +126,37 @@ Ext.onReady(function() {
         width: 375,
         buttonAlign: 'center',
         items: [{
-            id: 'recordLevel',
+            id: 'union_id',
             xtype: 'textfield',
+            allowBlank : false,
             width: 150,
-            fieldLabel: '名字',
-            name: "unionName"
+            fieldLabel: 'Union Id',
+            name: "union_id"
+        },{
+            id: 'union_name',
+            xtype: 'textfield',
+            allowBlank : false,
+            width: 150,
+            fieldLabel: 'Union Name',
+            name: "union_name"
         },
         {
-            id: 'normalLevel',
+            id: 'url_pattern',
+            xtype: 'textfield',
+            allowBlank : false,
+            width: 150,
+            fieldLabel: 'Url Pattern',
+            name: "url_pattern"
+        },{
+            id: 'percent',
             xtype: 'textfield',
             width: 150,
-            fieldLabel: '地址',
-            name: "unionAddress"
+            fieldLabel: 'Percent',
+            name: "percent"
         }]
     });
     var addWindow = new Ext.Window({
-        title: '增加用户',
+        title: 'Add Union',
         width: 400,
         resizable: false,
         closeAction: 'hide',
@@ -158,7 +171,30 @@ Ext.onReady(function() {
         buttons: [{
             text: '确定',
             handler: function() {
-                this.hide();
+                var baseUrl = "http://www.rtb5.com/cgi-bin/admin_cgi?";
+                var union_id = Ext.getCmp("union_id");
+                var union_name = Ext.getCmp("union_name");
+                var url_pattern = Ext.getCmp("url_pattern");
+                var percent = Ext.getCmp("percent");
+                var requestUrl;
+                requestUrl = baseUrl + "action=add&object=union" + "&" + union_id.getId() + "=" + union_id.getValue()
+                                + "&" + union_name.getId() + "=" + union_name.getValue()
+                                + "&" + url_pattern.getId() + "=" + url_pattern.getValue()
+                                + "&" + percent.getId() + "=" + percent.getValue();
+                Ext.Ajax.request({
+                    url : requestUrl,
+                    method : "POST",
+                    success : function (res) {
+                        if (res.responseText.trim() && 
+                            JSON.parse(res.responseText.trim())
+                            && JSON.parse(res.responseText.trim()).status === "1") {
+                            Ext.Msg.alert("Message", "Success");
+                        } else {
+                            Ext.Msg.alert("Message", "Error");
+                        }
+                        addWindow.hide();
+                    }
+                })
             }
         },
         {
@@ -169,7 +205,7 @@ Ext.onReady(function() {
         }]
     });
 
-    function aaa() {
+    function addUnion() {
         addWindow.show();
     };
 
